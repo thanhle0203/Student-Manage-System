@@ -1,9 +1,13 @@
 <?php
+    $servername = "localhost";
+    $username = "thanhle";
+    $password = "ella123";
+    $dbname = "student_manage_system";
 
-$con = mysqli_connect("localhost","root","","student-manage-system");
+    $conn = mysqli_connect($servername,$username,$password,$dbname);
 
-if(!$con) {
-    die('Connection Failed'. mysqli_connect_error());
-}
+    if(!$conn) {
+        die('Connection Failed'. mysqli_connect_error());
+    }
 
 ?>
