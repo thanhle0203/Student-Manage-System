@@ -2,6 +2,7 @@
     session_start();
     require 'dbcon.php';
 
+
     if (isset($_POST['save_student'])) {
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -54,10 +55,8 @@
         $phone = mysqli_real_escape_string($conn, $_POST['phone']);
         $course = mysqli_real_escape_string($conn, $_POST['course']);
 
-        $query = "UPDATE student 
-                SET name='$name', email='$email', phone='$phone', course='$course'
-                WHERE id='$student_id'
-                 ";
+        $query = "UPDATE student SET name='$name', email='$email', phone='$phone', course='$course'
+                WHERE id='$student_id' ";
 
         $query_run = mysqli_query($conn, $query);
 
