@@ -23,27 +23,6 @@
             header("Location: student-create.php");
             exit(0);
         }
-
-        if (isset($_POST['delete_student'])) 
-        {
-            $student_id = mysqli_real_escape_string($conn, $_POST['delete_student']);
-
-            $query = "DELETE FROM student WHERE id='$student_id' ";
-            $query_run = mysqli_query($conn, $query);
-
-            if ($query_run) 
-            {
-                $_SESSION['message'] = "Student Deleted Successfully";
-                header("Location: index.php");
-                exit(0);
-            }
-            else 
-            {
-                $_SESSION['message'] = "Student Not Deleted";
-                header("Location: index.php");
-                exit(0);
-            }
-        }
     }
 
     if (isset($_POST['update_student']))
@@ -69,6 +48,27 @@
         else 
         {
             $_SESSION['message'] = "Student Not Updated";
+            header("Location: index.php");
+            exit(0);
+        }
+    }
+
+    if (isset($_POST['delete_student'])) 
+    {
+        $student_id = mysqli_real_escape_string($conn, $_POST['delete_student']);
+
+        $query = "DELETE FROM student WHERE id='$student_id' ";
+        $query_run = mysqli_query($conn, $query);
+
+        if ($query_run) 
+        {
+            $_SESSION['message'] = "Student Deleted Successfully";
+            header("Location: index.php");
+            exit(0);
+        }
+        else 
+        {
+            $_SESSION['message'] = "Student Not Deleted";
             header("Location: index.php");
             exit(0);
         }
